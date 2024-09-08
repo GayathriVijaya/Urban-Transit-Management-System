@@ -1,7 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Bus_Management_System
 =======
 # Bus Transport Management System
+=======
+# DelhiDrive - A Bus Transport Management System
+>>>>>>> 29f3269 (Update README.md)
 
 ## Overview
 
