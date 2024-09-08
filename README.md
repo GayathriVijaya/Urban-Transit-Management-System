@@ -18,10 +18,10 @@ The Bus Transport Management System is a comprehensive solution designed to stre
 
 ### Admin Dashboard
 
-1. Prediction Modules and Alerts
+## 1. Prediction Modules and Alerts
 The prediction module empowers the admin to forecast bus schedules and operational anomalies based on historical data. This feature utilizes advanced machine learning models, such as SARIMAX, to train and test predictions, ensuring high accuracy. The system evaluates model performance using metrics like RMSE, enabling the admin to make well-informed decisions. Integrated with this module is an alert system that detects threshold breaches in the operations, automatically notifying the admin of potential issues, allowing for timely intervention and minimizing disruptions in service.
 
-2. Operational Dashboards and Scheduling
+## 2. Operational Dashboards and Scheduling
 The operational dashboard provides the admin with a dynamic overview of the current bus network status, including active buses, ongoing routes, drivers on leave, and operators on duty. This dashboard simplifies scheduling by offering a user-friendly interface to assign operators to buses, monitor route performance, and adjust schedules in real-time based on operational needs. This feature ensures efficient utilization of resources, reducing downtime and improving the overall management of the bus fleet.
 
 ### Driver Dashboard
