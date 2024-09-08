@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - DelhiDrive</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .header {
+            background-color: #142d4c;
+            color: #fff;
+            padding: 5px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header img {
+            width: 200px; 
+            height: 110px; 
+            vertical-align: middle;
+        }
+        .header h1 {
+            display: inline;
+            margin-left: 15px;
+            font-size: 2rem;
+        }
+        .fullscreen-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-box {
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+            animation: fadeIn 1s ease-out;
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        h2 {
+            color: #142d4c;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        p {
+            color: #6c757d;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin: 15px auto;
+            padding: 12px 20px;
+            font-size: 1rem;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .admin-btn {
+            background-color: #007bff;
+        }
+        .admin-btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 91, 187, 0.2);
+        }
+        .driver-btn {
+            background-color: #28a745;
+        }
+        .driver-btn:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(33, 136, 56, 0.2);
+        }
+        footer {
+            background-color: #142d4c;
+            color: #fff;
+            padding: 5px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 480px) {
+            .login-box {
+                padding: 20px;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            .btn {
+                font-size: 0.9rem;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="images/logo2.png" alt="DelhiDrive Logo" />
+        <h1>DelhiDrive</h1>
+    </div>
+    <div class="fullscreen-container">
+        <div class="login-box">
+            <h2>Login </h2>
+            <p>Please choose your role to proceed</p>
+            <a href="signin_admin.html" class="btn admin-btn">Admin</a>
+            <a href="signin_driver.html" class="btn driver-btn">Driver</a>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('login-form'); 
+    
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                const role = document.querySelector('input[name="role"]:checked').value;
+    
+                try {
+                    const response = await fetch('/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ username, password, role }),
+                    });
+                    
+                    const result = await response.json();
+    
+                    if (response.ok) {
+                        window.location.href = result.redirectTo;
+                    } else {
+                        alert(result.message);
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            });
+        });
+    </script>
+    <footer>
+        &copy; 2024 DelhiDrive. All rights reserved. <br>
+        <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a>
+    </footer>
+</body>
+</html>

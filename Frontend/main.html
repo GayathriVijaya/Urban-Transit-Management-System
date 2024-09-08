@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Dashboard</title>
+    <style>
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        
+        .header {
+            background-color: #142d4c;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header .logo img {
+            width: 100px;
+            height: 90px;
+        }
+
+        .header h2 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .container h3 {
+            color: #142d4c;
+            margin-top: 0;
+        }
+
+        .container p {
+            color: #6c757d;
+            font-size: 1.1rem;
+        }
+
+        
+        .option-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .option-buttons button {
+            flex: 1;
+            background-color: #142d4c;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0 10px;
+            text-transform: uppercase;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .option-buttons button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .option-buttons button i {
+            margin-right: 8px;
+        }
+
+        
+        .emergency-contact {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #28a745;
+            color: white;
+            padding: 12px 24px;
+            font-size: 18px;
+            border-radius: 50px;
+            text-align: center;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .emergency-contact:hover {
+            background-color: #218838;
+            
+        }
+
+        .emergency-contact i {
+            margin-right: 10px;
+        }
+
+        .emergency-contact-popup {
+            display: none;
+            background-color: white;
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 20px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            max-width: 90%;
+            text-align: left;
+            z-index: 1000;
+        }
+
+        .emergency-contact-popup h4 {
+            margin-top: 0;
+            color: #142d4c;
+        }
+
+        .emergency-contact-popup ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .emergency-contact-popup ul li {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .close-popup {
+            background-color: transparent;
+            border: none;
+            color: #142d4c;
+            font-size: 24px;
+            float: right;
+            cursor: pointer;
+        }
+
+        
+        footer {
+            background-color: #142d4c;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        
+        @media (max-width: 600px) {
+            .option-buttons button {
+                font-size: 14px;
+                padding: 12px;
+                margin: 0 5px;
+            }
+
+            .emergency-contact {
+                padding: 8px 16px;
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <header class="header">
+        <div class="logo">
+            <img src="images/logo2.png" alt="Company Logo">
+        </div>
+        <h2>Driver Dashboard</h2>
+    </header>
+
+    
+    <main>
+        <div class="container">
+            <h3>Welcome, Driver!</h3>
+            <p>You have been assigned to bus number <span id="bus-number">XYZ</span>.</p>
+
+            <!-- Option Buttons -->
+            <div class="option-buttons">
+                <a href="feedback.html"><button><i>&#128221;</i> Feedback</button></a>
+                <a href="leave-request.html"><button><i>&#128234;</i> Leave Request</button></a>
+                <a href="swap-request.html"><button><i>&#128257;</i> Swap Request</button></a>
+            </div>
+        </div>
+    </main>
+
+    
+    <div class="emergency-contact" onclick="showEmergencyContacts()">
+        <i>&#128222;</i> Emergency Contacts
+    </div>
+
+    
+    <div class="emergency-contact-popup" id="emergency-popup">
+        <button class="close-popup" onclick="closePopup()">&#10006;</button>
+        <h4>Emergency Contacts - Delhi</h4>
+        <ul>
+            <li><strong>Police:</strong> 100</li>
+            <li><strong>Ambulance:</strong> 102</li>
+            <li><strong>Fire Brigade:</strong> 101</li>
+            <li><strong>Delhi Transport Helpline:</strong> 1800-110-001</li>
+            <li><strong>Delhi Traffic Police:</strong> 1095</li>
+        </ul>
+    </div>
+
+    
+    <footer>
+        &copy; 2024 DelhiDrive. All rights reserved. <br>
+        <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a>
+    </footer>
+
+    
+    <script>
+        function showEmergencyContacts() {
+            document.getElementById('emergency-popup').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('emergency-popup').style.display = 'none';
+        }
+
+        
+        document.getElementById('bus-number').textContent = '1234'; 
+    </script>
+</body>
+</html>

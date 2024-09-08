@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form - DelhiDrive</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #142d4c;
+            color: #fff;
+            padding: 5px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        header img {
+            width: 100px;
+            height: 90px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .form-container h2 {
+            color: #142d4c;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .submit-button {
+            background-color: #142d4c;
+            border: none;
+            padding: 12px 20px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: background-color 0.3s, transform 0.3s;
+            text-transform: uppercase;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .submit-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 15px;
+            color: #142d4c;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .back-button:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background-color: #142d4c;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="images/logo2.png" alt="DelhiDrive Logo" />
+        <h1>DelhiDrive</h1>
+    </header>
+    <main>
+        <div class="form-container">
+            <h2>Submit Your Feedback</h2>
+            <form action="/submit-feedback" method="post">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="driver-id">Driver ID:</label>
+                    <input type="text" id="driver-id" name="operatorId" required>
+                </div>
+                <div class="form-group">
+                    <label for="feedback">Feedback:</label>
+                    <textarea id="feedback" name="feedback" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Submit Feedback</button>
+            </form>
+            <a href="main.html" class="back-button">Back to Dashboard</a>
+        </div>
+    </main>
+    <footer>
+        &copy; 2024 DelhiDrive. All rights reserved. <br>
+        <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a>
+    </footer>
+</body>
+</html>

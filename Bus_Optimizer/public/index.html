@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Alert Notifications</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            background-color: #142d4c;
+            color: white;
+            padding: 10px 20px;
+            width: 100%;
+            text-align: center;
+        }
+        main {
+            width: 80%;
+            max-width: 1200px;
+            margin: 20px;
+        }
+        .notification {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .notification p {
+            margin: 0;
+            font-size: 16px;
+        }
+        .notification.urgent {
+            border-color: #dc3545;
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .notification.warning {
+            border-color: #ffc107;
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        .notification.info {
+            border-color: #17a2b8;
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+        .link-container {
+            margin: 20px 0;
+        }
+        .colab-link {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .colab-link:hover {
+            text-decoration: underline;
+        }
+    
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bus Alert Notifications</h1>
+    </header>
+    <main>
+        <div class="link-container">
+            <p>View the Colab Notebook for more details:</p>
+            <a href="https://colab.research.google.com/drive/15ehhspATUxOpIy7-fCAN7j7StneU1oIx#scrollTo=56o7CwwWtZzI" class="colab-link" target="_blank">Open Colab Notebook</a>
+        </div>
+        <div id="notifications"></div>
+    </main>
+    <!-- <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io.connect('http://localhost:5000');
+
+        // Listen for alert events from the server
+        socket.on('alert', function (data) {
+            const { message, type } = data;
+            const notificationDiv = document.getElementById('notifications');
+            const newAlert = document.createElement('div');
+            newAlert.className = 'notification ' + (type || 'info');
+            newAlert.innerHTML = <p>${message}</p>;
+            notificationDiv.appendChild(newAlert);
+        });
+    </script> -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io.connect('http://localhost:5000');
+
+        socket.on('alert', function (message) {
+            const notificationDiv = document.getElementById('notifications');
+            const newAlert = document.createElement('div');
+            newAlert.className = 'notification';
+            newAlert.textContent = message;
+            notificationDiv.appendChild(newAlert);
+        });
+    </script>
+   
+</body>
+</html>

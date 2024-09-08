@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Features - DelhiDrive</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #142d4c;
+            color: #fff;
+            padding: 5px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        header img {
+            width: 100px; 
+            height: 90px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+        .features-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        .feature {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+        }
+        .feature h2 {
+            color: #142d4c;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .feature p {
+            color: #6c757d;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        .feature a {
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #142d4c;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .feature a:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        footer {
+            background-color: #142d4c;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        footer a {
+            color: #fff; 
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <header>
+        <img src="images/logo2.png" alt="DelhiDrive Logo" />
+        <h1>DelhiDrive</h1>
+    </header>
+    <main>
+        <div class="features-container">
+            <div class="feature">
+                <h2>Bus Demand Optimizer</h2>
+                <p>Our Bus Demand Optimizer utilizes advanced predictive analytics to forecast bus demand in various areas. By analyzing historical data and current trends, it ensures that bus schedules are optimized to meet passenger needs efficiently.</p>
+                <a href="http://localhost:5000">Learn More</a>
+            </div>
+            <div class="feature">
+                <h2>Bus Schedule</h2>
+                <p>The Bus Schedule feature provides real-time scheduling and route management. It offers up-to-date information on bus timings, routes, and stops, ensuring passengers can plan their travel effectively and avoid delays.</p>
+                <a href="http://localhost:3000/">View Schedule</a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        &copy; 2024 DelhiDrive. All rights reserved. <br>
+        <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a>
+    </footer>
+</body>
+</html>

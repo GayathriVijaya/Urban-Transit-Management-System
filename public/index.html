@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Management Dashboard</title>
+    <style>
+        .header {
+            background-color: #142d4c;
+            color: #fff;
+            padding: 0px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header img {
+            width: 200px; 
+            height: 110px; 
+            vertical-align: middle;
+        }
+        .header h1 {
+            display: inline;
+            margin-left: 15px;
+            font-size: 2rem;
+            color: white;
+            vertical-align: middle;
+        }
+        footer {
+            background-color: #142d4c;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        body { font-family: Arial, sans-serif; }
+        .container { width: 80%; margin: auto; }
+        h1 { text-align: center; }
+        .metric { margin: 20px 0; padding: 15px; background-color: #f2f2f2; border-radius: 5px; }
+        .metric h3 { margin-bottom: 10px; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .form-section { margin: 50px 0; padding: 20px; background-color: #e8f0fe; border-radius: 5px; }
+        label { display: block; margin-bottom: 10px; }
+        input, button { margin-bottom: 15px; padding: 10px; width: 100%; }
+    </style>
+</head>
+<body onload="updateDashboard()">
+    <div class="header">
+        <img src="images/logo2.png" alt="DelhiDrive Logo" />
+        <h1>DelhiDrive</h1>
+    </div>
+    <div class="container">
+        <h1>Bus Management Dashboard</h1>
+        <!-- Dashboard Metrics Section -->
+        <div class="metrics-grid">
+            <div class="metric" id="activeBuses">
+                <h3>Active Buses</h3>
+                <p id="activeBusesCount">Loading...</p>
+            </div>
+            <div class="metric" id="ongoingRoutes">
+                <h3>Ongoing Routes</h3>
+                <p id="ongoingRoutesCount">Loading...</p>
+            </div>
+            <div class="metric" id="operatorsOnDuty">
+                <h3>Operators On Duty</h3>
+                <p id="operatorsOnDutyCount">Loading...</p>
+            </div>
+            <div class="metric" id="driversOnLeave">
+                <h3>Drivers On Leave</h3>
+                <p id="driversOnLeaveCount">Loading...</p>
+            </div>
+            <!-- <div class="metric" id="fuelConsumption">
+                <h3>Fuel Consumption</h3>
+                <p id="fuelConsumptionAmount">N/A</p>
+            </div>
+            <div class="metric" id="maintenanceStatus">
+                <h3>Maintenance Status</h3>
+                <p id="maintenanceStatusCount">N/A</p>
+            </div> -->
+        </div>
+
+        
+        <div class="form-section">
+            <h2>Schedule a Bus</h2>
+            <form id="scheduleForm">
+                <label for="busRegNo">Bus Registration Number:</label>
+                <input type="text" id="busRegNo" name="busRegNo" required><br>
+
+                <label for="startTime">Start Time:</label>
+                <input type="time" id="startTime" name="startTime" required><br>
+
+                <label for="endTime">End Time:</label>
+                <input type="time" id="endTime" name="endTime" required><br>
+
+                <label for="route">Route Number:</label>
+                <input type="number" id="route" name="route" required><br>
+
+                <label for="operatorId">Operator ID:</label>
+                <input type="number" id="operatorId" name="operatorId" required><br>
+
+                <button type="submit">Submit Schedule</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        async function updateDashboard() {
+            try {
+                const [busesRes, routesRes, operatorsRes, driversRes] = await Promise.all([
+                    fetch('/buses/active'),
+                    fetch('/routes/ongoing'),
+                    fetch('/operators/onduty'),
+                    fetch('/drivers/leave'),
+                    <!-- fetch('/feedback/count') -->
+                ]);
+
+                const [busesData, routesData, operatorsData, driversData] = await Promise.all([
+                    busesRes.json(),
+                    routesRes.json(),
+                    operatorsRes.json(),
+                    driversRes.json()
+                ]);
+
+                document.getElementById('activeBusesCount').innerText = busesData.activeCount;
+                document.getElementById('ongoingRoutesCount').innerText = routesData.ongoingCount;
+                document.getElementById('operatorsOnDutyCount').innerText = operatorsData.onDutyCount;
+                document.getElementById('driversOnLeaveCount').innerText = driversData.driversOnLeave;
+            } catch (error) {
+                console.error('Error fetching dashboard data:', error);
+            }
+        }
+
+        
+        setInterval(updateDashboard, 10000);
+
+        document.getElementById('scheduleForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const data = {
+                busRegNo: document.getElementById('busRegNo').value,
+                startTime: document.getElementById('startTime').value,
+                endTime: document.getElementById('endTime').value,
+                route: document.getElementById('route').value,
+                operatorId: document.getElementById('operatorId').value
+            };
+
+            try {
+                const response = await fetch('/add-schedule', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                alert(result.message || result.error);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+    </script>
+    <footer>
+        &copy; 2024 DelhiDrive. All rights reserved. <br>
+        <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a>
+    </footer>
+</body>
+</html>

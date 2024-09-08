@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Ticket System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Raise a Maintenance Ticket</h1>
+        <form id="ticketForm">
+            <label for="operatorid">Operator ID:</label>
+            <input type="number" id="operatorid" name="operatorid" required>
+
+            <label for="issue">Issue:</label>
+            <textarea id="issue" name="issue" rows="4" required></textarea>
+
+            <button type="submit">Submit Ticket</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

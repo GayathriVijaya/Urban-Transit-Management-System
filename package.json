@@ -1,0 +1,14 @@
+{
+  "name": "bus-operator-api",
+  "version": "1.0.0",
+  "description": "Bus scheduling system API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-session": "^1.18.0",
+    "sqlite3": "^5.1.7"
+  }
+}
