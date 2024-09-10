@@ -1,0 +1,13 @@
+operator_id,assigned_route,Rest/Active
+1,405(Badarpur border)(Mori Gate Terminal),Active
+2,405(Mori Gate Terminal)(Badarpur border),Rest
+3,405A(badarpur border)(kashmiri gate),Active
+4,405A(kamla market)(badarpur border),Rest
+5,419(Kamla Market)(Okhla Phase 1),Active
+6,419(Lado Sarai(Firni Road))(Kamla Market),Rest
+7,419A(Okhla Phase 1)(Delhi Gate / Ambedkar Stadium),Active
+8,419A(Delhi Gate)(Lado Sarai(Firni Road)),Rest
+9,502(Mehrauli Terminal)(Kashmere Gate),Active
+10,502(Kamla Market)(Mehrauli Terminal),Rest
+11,502A(Mehrauli Terminal)(Paharganj Dispensary),Active
+12,502A(Delhi Gate)(Mehrauli Terminal),Rest
