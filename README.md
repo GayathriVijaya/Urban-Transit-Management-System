@@ -1,11 +1,10 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 # Bus_Management_System
-=======
+
 # Bus Transport Management System
-=======
+
 # DelhiDrive - A Bus Transport Management System
->>>>>>> 29f3269 (Update README.md)
+
 
 ## Overview
 
@@ -35,4 +34,4 @@ The operational dashboard provides the admin with a dynamic overview of the curr
 3. **Leave Management**: Apply for leave.
 4. **Shift Swap**: Request shift swaps.
 5. **Emergency Contacts**: View emergency contact information.
->>>>>>> 23ac33a (Create README.md)
+
