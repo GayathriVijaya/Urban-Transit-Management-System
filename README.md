@@ -1,9 +1,5 @@
 
-# Bus_Management_System
-
-# Bus Transport Management System
-
-# DelhiDrive - A Bus Transport Management System
+# Urban Transit Management System
 
 
 ## Overview
@@ -35,3 +31,8 @@ The operational dashboard provides the admin with a dynamic overview of the curr
 4. **Shift Swap**: Request shift swaps.
 5. **Emergency Contacts**: View emergency contact information.
 
+## Contributors
+
+- [Thiru](https://github.com/THIRU-1074)
+- [Aditi](https://github.com/Aditi2225)
+- [Harshitha](https://github.com/harshithatalapaneni)
