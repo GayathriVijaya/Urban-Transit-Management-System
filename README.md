@@ -1,7 +1,7 @@
 
 # Urban Transit Management System
 
-
+<!-- 
 ## Overview
 
 The Bus Transport Management System is a comprehensive solution designed to streamline bus scheduling and management. This system integrates functionalities for both administrators and operators to manage bus schedules, assignments, and communications effectively. Built with Express.js for the web application and Python for predictive modeling, this system ensures real-time updates and efficient management.
@@ -29,7 +29,7 @@ The operational dashboard provides the admin with a dynamic overview of the curr
 2. **Feedback**: Submit feedback regarding bus issues.
 3. **Leave Management**: Apply for leave.
 4. **Shift Swap**: Request shift swaps.
-5. **Emergency Contacts**: View emergency contact information.
+5. **Emergency Contacts**: View emergency contact information. -->
 
 ## Contributors
 
