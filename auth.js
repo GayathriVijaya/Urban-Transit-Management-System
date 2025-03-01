@@ -15,6 +15,7 @@ app.use(express.static(path.join(__dirname, 'frontend')));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
+
 app.use((req, res, next) => {
     console.log(`${req.method} request for '${req.url}'`);
     next();
